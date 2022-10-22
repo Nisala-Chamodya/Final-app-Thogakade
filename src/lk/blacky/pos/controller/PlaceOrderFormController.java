@@ -3,8 +3,12 @@ package lk.blacky.pos.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import lk.blacky.pos.db.Database;
 import lk.blacky.pos.model.Customer;
 import lk.blacky.pos.model.Item;
@@ -13,6 +17,7 @@ import lk.blacky.pos.model.Order;
 import lk.blacky.pos.view.tm.CartTm;
 import lk.blacky.pos.view.tm.ItemTm;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,6 +43,7 @@ public class PlaceOrderFormController {
     public TableColumn colOption;
     public Label lblTotal;
     public TextField txtOrderId;
+    public AnchorPane placeOrderFormContex;
 
     public void initialize(){
         colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
@@ -50,6 +56,7 @@ public class PlaceOrderFormController {
         setDateAndOrderId();
         loadAllCustomerId();
         loadAllItemCodes();
+        setOrderId();
 
         cmbCustomerids.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue!=null){
@@ -66,6 +73,21 @@ public class PlaceOrderFormController {
 
         });
 
+
+
+
+    }
+
+    private void setOrderId() {
+        if ( Database.orderTable.isEmpty()){
+            txtOrderId.setText("D-1");
+            return;
+        }
+        String tempOrderId=Database.orderTable.get(Database.orderTable.size()-1).getOrderId();
+        String[] array = tempOrderId.split("-");
+        int tempNumber=Integer.parseInt(  array[1] );
+        int finalizeOrderId=tempNumber+1;
+        txtOrderId.setText("D -"+finalizeOrderId);
 
 
 
@@ -210,8 +232,24 @@ public class PlaceOrderFormController {
         }
         Order  order =new Order(txtOrderId.getText(),new Date(),Double.parseDouble(lblTotal.getText()),
                 cmbCustomerids.getValue(),details);
+
         Database.orderTable.add(order);
+        manageQty();
         clearAll();
+    }
+
+    private void manageQty() {
+        for (CartTm tm:obList   ) {
+            for (Item i:Database.itemTable ) {
+                if (i.getCode().equals(tm.getCode())){
+                    i.setQtyOnHand(i.getQtyOnHand()-tm.getQty());
+                    break;
+                }
+
+            }
+
+
+        }
     }
 
     private void clearAll() {
@@ -221,9 +259,25 @@ public class PlaceOrderFormController {
         txtAddress.clear();
         txtSalary.clear();
 
+
+        //********combo box null karananawa***********
+        cmbCustomerids.setValue(null);
+        cmbItemCodes.setValue(null);
+
+        //*******************************************
+
         clearFields();
         cmbCustomerids.requestFocus();
+        setOrderId();
 
 
+    }
+
+    public void backToHomeOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage=(Stage) placeOrderFormContex.getScene().getWindow();
+        stage.setScene(new Scene(
+                FXMLLoader.load(getClass().getResource("../view/DashboardForm.fxml"))
+        ));
+        
     }
 }
