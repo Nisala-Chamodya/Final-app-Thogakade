@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="472.0" prefWidth="1137.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.blacky.pos.controller.DashBoardController">
+   <children>
+      <JFXButton layoutX="34.0" layoutY="68.0" onAction="#openCustomerFormOnAction" prefHeight="125.0" prefWidth="361.0" style="-fx-background-color: #4cd137;" text="Customer Mangement">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="421.0" layoutY="68.0" onAction="#openItemFormOnAction" prefHeight="125.0" prefWidth="361.0" style="-fx-background-color: #fbc531;" text="Item Mangement">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="31.0" layoutY="218.0" onAction="#openPlaceOrderFormOnAction" prefHeight="125.0" prefWidth="1076.0" style="-fx-background-color: #00a8ff;" text="Place Order">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="819.0" layoutY="68.0" onAction="#openOrderDetailsFormOnAction" prefHeight="125.0" prefWidth="290.0" style="-fx-background-color: #487eb0;" text="Order Details">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="56.0" layoutY="390.0" text="Devloped By : Blacky">
+         <font>
+            <Font name="Bell MT" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="929.0" layoutY="390.0" text="Vertion : 1.0.0" />
+   </children>
+</AnchorPane>
