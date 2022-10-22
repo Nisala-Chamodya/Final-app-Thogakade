@@ -2,12 +2,15 @@ package lk.blacky.pos.db;
 
 import lk.blacky.pos.model.Customer;
 import lk.blacky.pos.model.Item;
+import lk.blacky.pos.model.Order;
 
 import java.util.ArrayList;
 
 public class Database {
    public static ArrayList<Customer> customerTable=new ArrayList<Customer>();
    public static ArrayList<Item> itemTable=new ArrayList<Item>();
+   public static ArrayList<Order> orderTable=new ArrayList<>();
+
 
    static {
       customerTable.add(new Customer("1","Nisala","Kaluthara",52000));
