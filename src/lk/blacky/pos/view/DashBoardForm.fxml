@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="472.0" prefWidth="1137.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.blacky.pos.controller.DashBoardController">
+<AnchorPane fx:id="dashboardContext" prefHeight="530.0" prefWidth="1137.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.blacky.pos.controller.DashBoardController">
    <children>
       <JFXButton layoutX="34.0" layoutY="68.0" onAction="#openCustomerFormOnAction" prefHeight="125.0" prefWidth="361.0" style="-fx-background-color: #4cd137;" text="Customer Mangement">
          <cursor>
@@ -35,5 +34,15 @@
          </font>
       </Label>
       <Label layoutX="929.0" layoutY="390.0" text="Vertion : 1.0.0" />
+      <Label layoutX="24.0" layoutY="14.0" text="Thogakade" textFill="RED">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime" layoutX="715.0" layoutY="14.0" prefHeight="40.0" prefWidth="280.0" text="                      10:20:25" textFill="#070707">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
