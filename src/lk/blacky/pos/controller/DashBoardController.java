@@ -50,7 +50,8 @@ public class DashBoardController {
         setUi("PlaceOrderForm");
     }
 
-    public void openOrderDetailsFormOnAction(ActionEvent actionEvent) {
+    public void openOrderDetailsFormOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("OrderDetailForm");
 
     }
 

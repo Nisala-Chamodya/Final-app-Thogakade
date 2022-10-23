@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.blacky.pos.controller.OrderDetailFormContoller"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="orderDetailsContext" prefHeight="693.0" prefWidth="1078.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.blacky.pos.controller.OrderDetailFormContoller">
+   <children>
+      <TableView fx:id="tblOrders" layoutX="40.0" layoutY="93.0" prefHeight="512.0" prefWidth="1006.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="75.0" text="Order Id" />
+          <TableColumn fx:id="colName" prefWidth="195.0" text="Customer" />
+            <TableColumn fx:id="colDate" prefWidth="106.0" text="Date" />
+            <TableColumn fx:id="colTotal" prefWidth="214.0" text="Total" />
+            <TableColumn fx:id="colOption" prefWidth="235.0" text="Option" />
+        </columns>
+      </TableView>
+      <Button layoutX="31.0" layoutY="38.0" mnemonicParsing="false" onAction="#backToHomeOnAction" style="-fx-background-color: #2c3e50;" text="Back To Home" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>
